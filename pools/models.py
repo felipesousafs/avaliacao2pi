@@ -32,6 +32,9 @@ class Choice(models.Model):
         choices = Choice.objects.filter(question=self.question)
         for choice in choices:
             total_votes = total_votes + choice.votes
-        total = (100.0*self.votes)/total_votes
+        if total_votes == 0:
+            total = 0
+        else:
+            total = (100.0*self.votes)/total_votes
         return total
 
