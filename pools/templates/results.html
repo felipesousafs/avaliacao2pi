@@ -1,0 +1,9 @@
+<h2>Voting results</h2>
+<p>{{ question }}</p>
+
+{% for choice in question.choices %}
+    <span>
+        {{ choice }} | votes: {{ choice.votes }} | {{ choice.votes_in_percent }}%
+    </span><br>
+{% endfor %}
+<br>

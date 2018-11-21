@@ -1,0 +1,15 @@
+<h2>Question details</h2>
+<p>{{ question }}</p>
+
+{% for choice in question.choices %}
+    <span>
+        {{ choice }}
+    </span><br>
+{% endfor %}
+<br>
+<a href="{% url 'vote' question_id=question.id %}">
+    <span>Vote</span>
+</a>
+<a href="{% url 'results' question_id=question.id %}">
+    <span>Show results</span>
+</a>

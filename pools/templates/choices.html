@@ -1,0 +1,12 @@
+<h2>Voting page</h2>
+<p>{{ question }}</p>
+
+<h4>Choose one:</h4>
+{% for choice in question.choices %}
+    <span>
+        {{ choice }}
+        <a href="{% url 'choose' question_id=question.id choice_id=choice.id%}">
+            <span>This</span>
+        </a>
+    </span><br>
+{% endfor %}
