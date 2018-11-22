@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load fontawesome %}
+{% block content %}
 <h2>Question details</h2>
 <p>{{ question }}</p>
 
@@ -10,6 +13,8 @@
 <a href="{% url 'vote' question_id=question.id %}">
     <span>Vote</span>
 </a>
+&nbsp;
 <a href="{% url 'results' question_id=question.id %}">
     <span>Show results</span>
 </a>
+{% endblock %}

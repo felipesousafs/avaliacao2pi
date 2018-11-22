@@ -1,0 +1,39 @@
+{% load compile_static %}
+{% load static %}
+{% load fontawesome %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>deadPOOL :: Ask anything</title>
+    <script src="{% static 'javascript/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'javascript/popper.min.js' %}"></script>
+    <script src="{% static 'javascript/bootstrap/bootstrap.js' %}"></script>
+    <script src="{% static 'javascript/bootstrap/bootstrap.bundle.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'stylesheed/style.css' %}">
+    {% fontawesome_stylesheet %}
+</head>
+<body>
+{% include "shared/header.html" %}
+<div class="main container p-2" id="main">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer>
+    <div class="row fixed-bottom">
+        <div class="col d-none d-md-inline">
+            DeadPool
+            <a href="http://www.djangoproject.com/">
+                <img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0"
+                     alt="Made with Django." title="Made with Django."/>
+            </a>
+        </div>
+        <div class="col d-md-none">
+            <a href="#header">Go Top</a>
+        </div>
+    </div>
+</footer>
+
+</div>
+</body>
+</html>

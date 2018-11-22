@@ -6,7 +6,7 @@ class Question(models.Model):
     question_text = models.TextField(blank=False)
     closed = models.BooleanField(default=False)
     pub_date = models.DateTimeField(auto_now_add=True)
-    closed_at = models.DateTimeField(auto_now=True)
+    closed_at = models.DateTimeField(auto_now=False, null=True)
 
     def __str__(self):
         return self.question_text

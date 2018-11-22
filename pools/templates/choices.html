@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load fontawesome %}
+{% block content %}
 <h2>Voting page</h2>
 <p>{{ question }}</p>
 
@@ -10,3 +13,4 @@
         </a>
     </span><br>
 {% endfor %}
+{% endblock %}

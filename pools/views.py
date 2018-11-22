@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from pools.models import Question
 from pools.models import Choice
-from django.http import request
+from pools.forms import NewQuestionForm
 
 # Create your views here.
 
@@ -30,3 +30,14 @@ def results(request, question_id):
 def manage(request, question_id):
     question = Question.objects.get(id=question_id)
     return render(request, "manage.html", {'question': question})
+
+def new_question(request):
+    if request.method == "POST":
+        question_form = NewQuestionForm(data=request.POST)
+        redirect_to = request.POST.get("redirect_to", "/")
+        if question_form.is_valid():
+            question = question_form.save()
+            return redirect('question', question_id=question.id)
+    else:
+        question_form = NewQuestionForm()
+        return render(request, "new_question.html", {'question_form':question_form})

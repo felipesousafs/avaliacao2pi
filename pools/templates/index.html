@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load fontawesome %}
+{% block content %}
 <h2>Questions</h2>
 
 {% for question in questions %}
@@ -8,3 +11,4 @@
     </a>
     </p>
 {% endfor %}
+{% endblock %}
