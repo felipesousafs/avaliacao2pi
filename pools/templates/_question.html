@@ -1,0 +1,42 @@
+<div class="card text-white bg-secondary mb-3 rounded-0">
+    <div class="card-header">
+        {{ question.title }}
+        Published at <strong>{{ question.pub_date }}</strong>
+        <a href="{% url 'destroy_question' question_id=question.id %}"
+           class="badge badge-danger rounded-0 p-1 float-right" onclick="return confirm('Tem certeza?')">
+            <span>Destroy</span>
+        </a>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            {{ question.question_text }}
+        </p>
+    </div>
+    {% if request.resolver_match.url_name != "index" %}
+        <div class="card-body">
+            {% for choice in question.choices.all %}
+                <li>
+                    {{ choice }}
+                </li>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="input-group clearfix" role="group">
+        <a href="{% url 'vote' question_id=question.id %}" class="btn btn-dark rounded-0 col-4">
+            <span>Vote</span>
+        </a>
+        <a href="{% url 'results' question_id=question.id %}" class="btn btn-dark rounded-0 col-4">
+            <span>Results</span>
+        </a>
+        {% if request.resolver_match.url_name == "index" %}
+            <a href="{% url 'question' question_id=question.id %}" class="btn btn-dark rounded-0 col-4">
+                <span>Show details</span>
+            </a>
+        {% else %}
+            <a href="{% url 'edit_question' question_id=question.id %}" class="btn btn-dark rounded-0 col-4">
+                <span>Edit</span>
+            </a>
+        {% endif %}
+    </div>
+</div>

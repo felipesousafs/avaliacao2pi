@@ -1,0 +1,23 @@
+<form method="post">
+    <div class="modal-body">
+        {{ question_form.management_form }}
+        {% for field in question_form %}{% csrf_token %}
+            <div class="form-group">
+                {{ field }}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show p-2 mt-1 rounded-0" role="alert">
+                        {{ error }}
+                        <button type="button" class="close p-2" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+    </div>
+    <div class="modal-footer">
+        <input type="hidden" value="{{ redirect_to }}" name="redirect_to">
+        <button type="submit" class="btn btn-primary">Submit!</button>
+    </div>
+</form>

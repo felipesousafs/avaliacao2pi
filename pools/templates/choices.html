@@ -1,16 +1,13 @@
 {% extends "base.html" %}
 {% load fontawesome %}
 {% block content %}
-<h2>Voting page</h2>
-<p>{{ question }}</p>
-
-<h4>Choose one:</h4>
-{% for choice in question.choices %}
-    <span>
-        {{ choice }}
-        <a href="{% url 'choose' question_id=question.id choice_id=choice.id%}">
-            <span>This</span>
-        </a>
-    </span><br>
-{% endfor %}
+    <h2>Voting page</h2>
+    <p>{{ question }}</p>
+    <ul class="list-group list-group-flush">
+        {% for choice in question.choices.all %}
+            <a href="{% url 'choose' question_id=question.id choice_id=choice.id %}" class="list-group-item badge-dark list-group-item-dark">
+                <span>{{ choice }}</span>
+            </a>
+        {% endfor %}
+    </ul>
 {% endblock %}

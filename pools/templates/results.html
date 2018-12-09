@@ -1,13 +1,16 @@
 {% extends "base.html" %}
+{% load custom_tags %}
 {% load fontawesome %}
 {% block content %}
-<h2>Voting results</h2>
-<p>{{ question }}</p>
-
-{% for choice in question.choices %}
-    <span>
-        {{ choice }} | votes: {{ choice.votes }} | {{ choice.votes_in_percent }}%
-    </span><br>
-{% endfor %}
-<br>
+    <h2>Voting results</h2>
+    <p>{{ question }}</p>
+    {% for choice in question.choices.all %}
+        <span class="shadow-lg"><strong>{{ choice }} | votes: {{ choice.votes }} </strong></span>
+        <div class="progress mt-1 rounded-0 bg-secondary p-1" style="height: 30px;">
+            <div class="progress-bar p-1 bg-dark text-light rounded" role="progressbar"
+                 style="width: {% votes_in_percent choice.id question_id %}%;">
+                <span class="float-right">{% votes_in_percent choice.id question_id %}%</span>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

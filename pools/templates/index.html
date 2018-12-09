@@ -1,14 +1,9 @@
 {% extends "base.html" %}
 {% load fontawesome %}
 {% block content %}
-<h2>Questions</h2>
+    <h2>Questions</h2>
 
-{% for question in questions %}
-    <p>
-    <p>{{ question.question_text }}</p>
-    <a href="{% url 'question' question_id=question.id %}">
-        <span>Show details</span>
-    </a>
-    </p>
-{% endfor %}
+    {% for question in questions %}
+        {% include '_question.html' %}
+    {% endfor %}
 {% endblock %}

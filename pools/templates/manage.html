@@ -4,7 +4,7 @@
 <h2>Question details</h2>
 <p>{{ question }}</p>
 
-{% for choice in question.choices %}
+{% for choice in question.choices.all %}
     <span>
         {{ choice }}
     </span><br>

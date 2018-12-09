@@ -20,9 +20,13 @@ from pools import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('question/<int:question_id>/', views.question, name='question'),
-    path('question/<int:question_id>/vote/', views.vote, name='vote'),
-    path('question/<int:question_id>/choose/<int:choice_id>/', views.choose, name='choose'),
-    path('question/<int:question_id>/results/', views.results, name='results'),
-    path('question/new', views.new_question, name='new_question'),
+    path('questions/', views.index, name='questions'),
+    path('questions/new', views.new_question, name='new_question'),
+    path('questions/<int:question_id>/', views.question, name='question'),
+    path('questions/<int:question_id>/vote/', views.vote, name='vote'),
+    path('questions/<int:question_id>/choose/<int:choice_id>/', views.choose, name='choose'),
+    path('questions/<int:question_id>/results/', views.results, name='results'),
+    path('questions/<int:question_id>/edit/', views.edit_question, name='edit_question'),
+    path('questions/<int:question_id>/destroy/', views.destroy_question, name='destroy_question'),
+
 ]
