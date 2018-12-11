@@ -1,7 +1,7 @@
 <div class="card text-white bg-secondary mb-3 rounded-0">
     <div class="card-header">
         {{ question.title }}
-        Published at <strong>{{ question.pub_date }}</strong>
+        <span class="text-dark"> - Published at <strong>{{ question.pub_date }}</strong></span>
         <a href="{% url 'destroy_question' question_id=question.id %}"
            class="badge badge-danger rounded-0 p-1 float-right" onclick="return confirm('Tem certeza?')">
             <span>Destroy</span>
